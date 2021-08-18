@@ -1,3 +1,4 @@
 # FoodBox
 
-Little website that I'm making while following Driven's minicourse.
+Little website/app that was made by following Driven's FoodBox event.
+![FoodBox Screenshot](/images/screenshot.png)
