@@ -1,106 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>FoodBox</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FoodBox</title>
+        <style>
+            .headerBox {
+                background: rgb(224, 50, 50);
+                border-radius: 8px;
+                padding: 16px;
 
-    <style>
-        body {
-            background: rgb(230, 230, 230);
-        }
+                color: white;
+            }
 
-        .header {
-            background: rgb(224, 50, 50);
-            border-radius: 8px;
-            padding: 16px;
+            body {
+                background: rgb(230, 230, 230);
+            }
 
-            color: white;
-        }
+            .containerProducts {
+                display: flex;
+            }
 
-        .product {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 4px 4px 2px 0 rgb(224, 50, 50);
-            margin-bottom: 8px;
-            padding: 8px;
+            .product {
+                background: white;
+                border: solid 2px white;
+                border-radius: 8px;
+                box-shadow: 0px 0px 8px 2px rgb(202, 202, 202);
+                cursor: pointer;
+                margin-bottom: 8px;
+                margin-right: 8px;
+                padding: 8px;
 
-            width: 320px;
-        }
+                width: 320px;
+                height: 120px;
+            }
 
-        .price {
-            font-size: 24px;
-            margin: 0;
-            margin-top: 8px;
-            text-align: end;
-        }
+            .price {
+                font-family: Arial;
+                font-size: 18px;
+                margin: 0;
+                margin-top: 8px;
+                text-align: left;
+            }
 
-        h1 {
-            margin: 0;
-            
-            font-family: Arial;
-            font-size: 48px;
-        }
+            h1 {
+                margin: 0;
+                
+                font-family: Arial;
+                font-size: 48px;
+                font-weight: bold;
+            }
 
-        h2 {
-            margin: 0;
-            
-            font-family: Arial;
-            font-size: 24px;
-        }
+            h2 {
+                margin: 0;
+                
+                font-family: Arial;
+                font-size: 24px;
+            }
 
-        h3 {
-            margin-bottom: 4px;
-            
-            font-family: Arial;
-            font-size: 24px;
-        }
+            h3 {
+                margin-bottom: 4px;
+                
+                font-family: Arial;
+                font-size: 24px;
+            }
 
-        h4 {
-            margin-top: 0;
-            margin-bottom: 4px;
-            
-            font-family: Arial;
-            font-size: 20px;
-        }
+            h4 {
+                margin-top: 0;
+                margin-bottom: 0;
+                
+                font-family: Arial;
+                font-size: 20px;
+            }
 
-        img {
-            border-radius: 8px;
-            float: left;
-            margin-right: 8px;
-            width: 136px;
-        }
-    </style>
-</head>
+            p {
+                font-family: sans-serif;
+                font-style: italic;
+                font-size: 16px;
+            }
 
-<body>
-    <div class="header">
-        <h1>FoodBox</h1>
-        <h2>Monte seu box e receba em até meia hora!</h1>
-    </div>
+            img {
+                display: block;
+                float: right;
+                object-fit: cover;
+                
+                border-radius: 50%;
+                margin-right: 8px;
+                height: 104px;
+                width: 104px;
+            }
 
-    <h3>Escolha seu prato:</h3>
-    <div class="product">
-        <img
-            src="https://blog-static.deliway.com.br/assets/base/077/7d5/c17/sushi-hot-holl.jpg"
-        >
+            .finishOrderButton {
+                background: gray;
+                border-radius: 32px;
+                box-shadow: 0px 0px 8px 2px rgb(202, 202, 202);
+                color: white;
+                cursor: default;
+                padding: 16px;
+                margin-top: 24px;
 
-        <h4>20 Sushis</h4>
-        <p>Sabores escolhidos aleatoriamente!</p>
-        <p class="price"><strong>R$ 37,99</strong></p>
-    </div>
+                width: 240px;
+            }
 
-    <div class="product">
-        <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-sashimi-0.jpg">
-        
-        <h4>10 Sashimis</h4>
-        <p>Sabores escolhidos aleatoriamente!</p>
-        <p class="price"><strong>R$ 25,99</strong></p>
+            .finishOrderText {
+                text-align: center;
+            }
+        </style>
+    </head>
 
-        
-    </div>
-</body>
+    <body>
+        <div class="headerBox">
+            <h1>FoodBox</h1>
+            <h2>Monte seu box e receba em até meia hora!</h1>
+        </div>
 
+        <h3>Primeiro, escolha seu prato</h3>
+        <div class="containerProducts">
+            <div id="sushis" class="product mainCourse" onclick="chooseProduct('mainCourse', 'sushis', '20 sushis')">
+                <img src="https://blog-static.deliway.com.br/assets/base/077/7d5/c17/sushi-hot-holl.jpg">
+    
+                <h4>Sushis</h4>
+                <p>20 sushis com sabores escolhidos aleatoriamente</p>
+                <p class="price"><strong>R$ 37,99</strong></p>
+            </div>
+    
+            <div id="sashimis" class="product mainCourse" onclick="chooseProduct('mainCourse', 'sashimis', '12 sashimis')">
+                <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-sashimi-0.jpg">
+                
+                <h4>Sashimis</h4>
+                <p>10 sashimis de salmão</p>
+                <p class="price"><strong>R$ 25,99</strong></p>
+            </div>
+        </div>
+
+        <h3>Agora, escolha seu molho</h3>
+        <div class="containerProducts">
+            <div id="shoyu" class="product sauce" onclick="chooseProduct('sauce', 'shoyu', 'shoyu')">
+                <img src="http://receitasdeminuto.com/wp-content/uploads/2012/05/molho_shoyu_faz_mal.jpg">
+                
+                <h4>Shoyu</h4>
+                <p>Molho de soja salgado</p>
+                <p class="price"><strong>R$ 1,99</strong></p>
+            </div>
+
+            <div id="tare" class="product sauce" onclick="chooseProduct('sauce', 'tare', 'tarê')">
+                <img src="https://i.pinimg.com/474x/01/48/fd/0148fdd39c366f08e215188893f39bb2.jpg">
+    
+                <h4>Tarê</h4>
+                <p>Molho adocicado</p>
+                <p class="price"><strong>R$ 1,99</strong></p>
+            </div>
+        </div>
+
+        <h3>Não se esqueça da sua bebida</h3>
+        <div class="containerProducts">
+            <div id="cola" class="product drink" onclick="chooseProduct('drink', 'cola', 'latinha de coca-cola')">
+                <img src="https://www.drogariaminasbrasil.com.br/media/catalog/product/r/e/refrigerante_coca_cola_lata_350ml.jpg">
+    
+                <h4>Coca-Cola Lata</h4>
+                <p>Lata 350ml de coca-cola</p>
+                <p class="price"><strong>R$ 5,99</strong></p>
+            </div>
+    
+            <div id="pepsi" class="product drink" onclick="chooseProduct('drink', 'pepsi', 'latinha de pepsi')">
+                <img src="https://static.clubeextra.com.br/img/uploads/1/249/619249.jpg">
+                
+                <h4>Pepsi Lata</h4>
+                <p>Lata 350ml de pepsi</p>
+                <p class="price"><strong>R$ 4,99</strong></p>
+            </div>
+        </div>
+
+        <div id="finishOrderButton" class="finishOrderButton" onclick="finishOrder()">
+            <h2 class=finishOrderText>
+                Finalizar pedido
+            </h2>
+        </div>
+
+        <script>
+            let mainCourse = "";
+            let sauce = "";
+            let drink = "";
+
+            let isMainCourseSelected = false;
+            let isSauceSelected = false;
+            let isDrinkSelected = false;
+
+            function chooseProduct(category, product, name) {
+                let allProducts = document.getElementsByClassName(["product", category].join(" "));
+                
+                for (let i = 0; i < allProducts.length; i++) {
+                    let p = allProducts[i];
+                    p.style.borderColor = "white";
+                }
+
+                let current = document.getElementById(product);
+                current.style.borderColor = "green";
+
+                switch (category) {
+                    case "mainCourse":
+                        mainCourse = name;
+                        isMainCourseSelected = true;
+                        break;
+                    case "sauce":
+                        sauce = name;
+                        isSauceSelected = true;
+                        break;
+                    case "drink":
+                        drink = name;
+                        isDrinkSelected = true;
+                        break;
+                }
+
+                let finishButton = document.getElementById("finishOrderButton");
+                if (isMainCourseSelected && isSauceSelected && isDrinkSelected) {
+                    finishButton.style.background = "green";
+                    finishButton.style.cursor = "pointer";
+                } else {
+                    finishButton.style.background = "gray";
+                    finishButton.style.cursor = "default";
+                }
+            }
+
+            function finishOrder() {
+                let combo = mainCourse + ", " + sauce + " e " + drink;
+                alert("Seu pedido de " + combo + " foi realizado e chegará dentro de meia hora!")
+
+                //window.open("https://wa.me/+5584999999999?text=" + message);
+            }
+        </script>
+    </body>
 </html>
